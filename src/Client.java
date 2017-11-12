@@ -20,9 +20,10 @@ public class Client extends JFrame{
 
     //constructor
     public Client(String host){
-        setTitle("I'm using the most awesome Messenger");
+        setTitle("Client Chat Window");
         serverIP = host;
         userText = new JTextField();
+        userText.setFont(new Font("courier", Font.PLAIN, 25));
         userText.setEditable(false);
         userText.addActionListener(
                 new ActionListener(){
@@ -35,6 +36,7 @@ public class Client extends JFrame{
         );
         add(userText, BorderLayout.NORTH);
         chatWindow = new JTextArea();
+        chatWindow.setFont(new Font("courier", Font.PLAIN, 20));
         add(new JScrollPane(chatWindow), BorderLayout.CENTER);
         setSize(300,150);
         setVisible(true);
@@ -97,11 +99,10 @@ public class Client extends JFrame{
         try{
             output.writeObject("CLIENT - " + message);
             output.flush();
-            showMessage("\nCLLIENT - "+message);
+            showMessage("\nCLIENT - "+message);
         }catch(IOException io){
             chatWindow.append("\n something went wrong!!");
         }
-
     }
 
     private void showMessage(final String text){

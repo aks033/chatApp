@@ -19,8 +19,9 @@ public class Server extends JFrame{
 
     //constructor
     public Server(){
-        setTitle("The Most Amazing Messenger");
+        setTitle("Messenger");
         userText= new JTextField();
+        userText.setFont(new Font("courier", Font.PLAIN, 25));
         userText.setEditable(false);
         userText.addActionListener(
                 new ActionListener() {
@@ -33,6 +34,8 @@ public class Server extends JFrame{
         );
         add(userText, BorderLayout.NORTH);
         chatWindow = new JTextArea();
+        chatWindow.setBounds(20,20, 500,500);
+        chatWindow.setFont(new Font("courier", Font.PLAIN, 20));
         add (new JScrollPane(chatWindow));
         setSize(300,150);
         setVisible(true);
@@ -106,7 +109,7 @@ public class Server extends JFrame{
         try{
             output.writeObject("SERVER -" + message);
             output.flush();
-            showMessage("\nServer - " + message);
+            showMessage("\nSERVER - " + message);
         }catch(IOException io){
             chatWindow.append("\n ERROR: cant't send this message");
         }
