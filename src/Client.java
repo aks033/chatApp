@@ -48,7 +48,7 @@ public class Client extends JFrame{
             setupStreams();
             whileChatting();
         }catch(EOFException eof){
-            showMessage("\n connection termianted");
+            showMessage("\n connection terminated");
         }catch(IOException io){
             io.printStackTrace();
         }finally{
@@ -58,7 +58,7 @@ public class Client extends JFrame{
 
     private void connectServer() throws IOException {
         showMessage("Connecting....\n");
-        connection = new Socket(InetAddress.getByName(serverIP), 5001);
+        connection = new Socket(InetAddress.getByName(serverIP), 5000);
         showMessage("Connected to :: " + connection.getInetAddress().getHostName());
 
     }
